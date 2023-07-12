@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+  prefHeight="550.0" prefWidth="880.0"
+  stylesheets="/se/elnama/gui/seriallogger/view/SerialLoggerLayout.css"
+  xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="se.elnama.gui.seriallogger.view.SerialLoggerLayoutController">
+  <GridPane layoutY="499.0" prefHeight="52.0" prefWidth="385.0" AnchorPane.bottomAnchor="10.0"
+    AnchorPane.leftAnchor="15.0">
+    <Button mnemonicParsing="false" onAction="#setComBaudRate" prefWidth="38.0" text="Set"
+      GridPane.columnIndex="3" GridPane.rowIndex="0">
+      <GridPane.margin>
+        <Insets left="2.0"/>
+      </GridPane.margin>
+    </Button>
+    <Button mnemonicParsing="false" onAction="#setIntervalTime" prefWidth="38.0" text="Set"
+      GridPane.columnIndex="3" GridPane.rowIndex="1">
+      <GridPane.margin>
+        <Insets left="2.0"/>
+      </GridPane.margin>
+    </Button>
+    <CheckBox GridPane.columnIndex="0" GridPane.rowIndex="0" mnemonicParsing="false"
+      onAction="#checkOne"
+      text="COM 1" fx:id="checkOne"/>
+    <CheckBox fx:id="checkThree" mnemonicParsing="false" onAction="#checkThree" text="COM 3"
+      GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <CheckBox fx:id="checkTwo" mnemonicParsing="false" onAction="#checkTwo" text="COM 2"
+      GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <CheckBox fx:id="checkFour" mnemonicParsing="false" onAction="#checkFour" text="COM 4"
+      GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Label GridPane.columnIndex="5" GridPane.rowIndex="0" text="Baud Rate : "
+      fx:id="labelBaud"/>
+    <Label fx:id="labelInterval" text="Interval (ms) : " GridPane.columnIndex="5"
+      GridPane.rowIndex="1"/>
+    <TextField GridPane.columnIndex="2" GridPane.rowIndex="0" promptText="set baud"
+      fx:id="textBaud"/>
+    <TextField fx:id="textInterval" promptText="set interval" GridPane.columnIndex="2"
+      GridPane.rowIndex="1"/>
+    <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.0" minWidth="78.0" prefWidth="78.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.0" minWidth="78.0" prefWidth="78.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="75.0" prefWidth="75.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="5.0" minWidth="5.0" prefWidth="5.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" prefWidth="110.0"/>
+    </columnConstraints>
+    <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+  </GridPane>
+  <HBox layoutX="779.0" layoutY="486.0" prefHeight="25.0" prefWidth="96.0"
+    AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+    <Label prefHeight="17.0" prefWidth="61.0" text="Decryption">
+      <HBox.margin>
+        <Insets top="4.0"/>
+      </HBox.margin>
+    </Label>
+    <ToggleButton fx:id="toggleDecryption" mnemonicParsing="false" onAction="#toggleDecryption"
+      prefHeight="23.0" prefWidth="32.0">
+      <HBox.margin>
+        <Insets left="3.0"/>
+      </HBox.margin>
+      <font>
+        <Font size="10.0"/>
+      </font>
+    </ToggleButton>
+  </HBox>
+  <MenuBar layoutX="-2.0" layoutY="2.0" prefHeight="25.0" prefWidth="895.0"
+    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <Menu mnemonicParsing="false" text="File">
+      <MenuItem mnemonicParsing="false" onAction="#menuSaveFile" text="Save"/>
+      <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Close"/>
+    </Menu>
+    <Menu mnemonicParsing="false" text="Edit">
+      <Menu mnemonicParsing="false" text="Timeout Mode">
+        <CheckMenuItem fx:id="checkMenuBlock" mnemonicParsing="false" onAction="#checkTimeoutBlock"
+          text="TIMEOUT_READ_BLOCKING"/>
+        <CheckMenuItem fx:id="checkMenuSemiBlock" mnemonicParsing="false"
+          onAction="#checkTimeoutSemiBlock" text="TIMEOUT_READ_SEMI_BLOCKING"/>
+        <CheckMenuItem fx:id="checkMenuNonBlock" mnemonicParsing="false"
+          onAction="#checkTimeoutNonBlock" text="TIMEOUT_NONBLOCKING"/>
+      </Menu>
+      <MenuItem mnemonicParsing="false" onAction="#menuClear" text="Clear"/>
+    </Menu>
+    <Menu mnemonicParsing="false" text="Help">
+      <MenuItem mnemonicParsing="false" onAction="#menuTimeoutDefault" text="Defaults"/>
+      <MenuItem mnemonicParsing="false" onAction="#menuAbout" text="About"/>
+    </Menu>
+  </MenuBar>
+  <SplitPane dividerPositions="0.65" layoutX="393.0" layoutY="106.0" prefHeight="160.0"
+    prefWidth="200.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0"
+    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <TextArea fx:id="textAreaHex" editable="false" layoutX="54.0" layoutY="118.0"
+        prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0"
+        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+    </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <TextArea fx:id="textAreaAscii" editable="false" layoutX="41.0" layoutY="131.0"
+        prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0"
+        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+    </AnchorPane>
+  </SplitPane>
+</AnchorPane>

@@ -1,0 +1,51 @@
+.text-area{
+    -fx-background-color: #fff, #fff;
+}
+
+.text-area .content {
+    -fx-background-color: #fff;
+}
+
+.text-area:focused .content {
+    -fx-background-color: #fff;
+}
+
+#textHex .scroll-bar:vertical {
+    -fx-opacity: 0;
+}
+
+.button:focused,
+.toggle-button:focused {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+
+.toggle-button:selected:focused {
+        -fx-background-color:
+            -fx-shadow-highlight-color,
+            linear-gradient(to bottom, derive(-fx-outer-border, -20%), -fx-outer-border),
+            linear-gradient(to bottom,
+                    derive(-fx-color, -22%) 0%,
+                    derive(-fx-color, -13%) 20%,
+                    derive(-fx-color, -11%) 50%);
+    -fx-background-insets: 0 0 -1 0, 0, 1;
+}
+
+.check-box:focused > .box {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+}
+
+.dialog-pane .button {
+    -fx-background-color: -fx-base;
+    -fx-text-fill: white;
+}
+
+.dialog-pane .button:default {
+    -fx-background-color: -fx-default-button;
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>se.elnama.gric</groupId>
+    <artifactId>gui</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>net-logger</artifactId>
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>se.elnama.gric</groupId>
+      <artifactId>net</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>se.elnama.lib</groupId>
+      <artifactId>util</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>${javafx.maven.plugin.version}</version>
+        <configuration>
+          <jlinkImageName>gui-net-logger</jlinkImageName>
+          <jlinkZipName>gui-net-logger</jlinkZipName>
+          <compress>2</compress>
+          <launcher>launcher</launcher>
+          <noHeaderFiles>true</noHeaderFiles>
+          <noManPages>true</noManPages>
+          <mainClass>serial.logger/se.elnama.gui.netlogger.Main</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
